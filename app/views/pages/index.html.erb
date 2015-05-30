@@ -1,0 +1,15 @@
+<h1>Hola !!! soy la página </h1>
+
+<%= image_tag("uni.jpg") %>
+<img src="<%= asset_path('uni.jpg')%>">
+
+
+
+<a href="<%= pages_index_path %>" title=""> hola </a>
+<%= link_to "hola", pages_index_path %>
+
+<ul>
+	<% @a.each do |ele| %>
+	  <li> <%= ele * 2 %> </li>
+	<% end %>
+</ul>
