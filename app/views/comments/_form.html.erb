@@ -1,0 +1,13 @@
+
+<div class="well">
+<%= form_for [@post, @comment] do |f| %>
+	<div class="form-group">
+	<%= f.label :content, "Comentarios?" %>
+	<%= f.text_area :content, class:'form-control' %>
+	</div>
+
+	<div class="form-group">
+	<%= f.submit 'enviar', class:'btn btn-primary'%>
+	</div>
+<% end %>
+</div>
