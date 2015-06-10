@@ -1,0 +1,22 @@
+<h1>Confirma tu Email</h1>
+
+<%= form_for(@user, as: 'user', url: finish_signup_path(id: current_user, method: :patch)) do |f| %>
+  <% if @user.errors.any? %>
+    <h2>Errores encontrados:</h2>
+    <ul>
+      <% @user.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  <% end %>
+
+  <div>
+    <%= f.label :email %>
+    <%= f.text_field :email, autofocus: true, value: '', placeholder: 'Example: email@me.com' %>
+  </div>
+
+  <div>
+    <%= f.submit 'Confirmar' %>
+  </div>
+
+<% end %>

@@ -1,10 +1,11 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users, controllers: { omniauth_callbacks: "omniauth_callbacks" }
   get 'comments/create'
 
   resources :posts do
     resources :comments
   end
+  resources :finish_signup, only: [:edit, :update]
 
   get 'pages/index'
   get 'pages/about'
