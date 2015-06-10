@@ -6,5 +6,13 @@ class User < ActiveRecord::Base
 
   has_many :posts, dependent: :destroy
   has_many :comments, dependent: :destroy
+  enum role: [:noob, :amateur, :pro]
+
+  before_save :default_values
+
+  def default_values
+    self.role ||= 0
+  end
+
 
 end
