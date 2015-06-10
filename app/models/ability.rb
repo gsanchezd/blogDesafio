@@ -9,7 +9,7 @@ class Ability
       can :manage, :all?
     elsif user.noob?
       can :read, :all
-      can :create, :post
+      can :create, Post
       can [:edit, :destroy], [Post, Comment], user_id: user.id
     else
       can :read, :all      
