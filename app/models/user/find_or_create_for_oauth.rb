@@ -12,6 +12,18 @@ class User::FindOrCreateForOauth
 
   private
 
+  def find_user
+    @current_user || identity.user || find_user_by_oauth
+  end
+
+  def find_user_by_oauth
+    User.find_by(email: @oauth.info.email)
+  end
+
+  def identity
+    @identity ||= Identity.find_or_create_by_oauth(@oauth)
+  end
+
   def create_user_from_oauth
     User.create(
       email: email_param,
@@ -26,18 +38,6 @@ class User::FindOrCreateForOauth
 
   def pass_param
     @pass_param ||= Devise.friendly_token[0, 20]
-  end
-
-  def find_user
-    @current_user || identity.user || find_user_by_oauth
-  end
-
-  def find_user_by_oauth
-    User.find_by(email: @oauth.info.email)
-  end
-
-  def identity
-    @identity ||= Identity.find_or_create_by_oauth(@oauth)
   end
 
   def assign_user_to_identity(user)
