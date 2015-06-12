@@ -1,8 +1,8 @@
 class User::FindOrCreateForOauth
   attr_reader :identity, :oauth
 
-  def initialize(args)
-    @oauth = args[:oauth]
+  def initialize(oauth)
+    @oauth = oauth
     init_identity
   end
 

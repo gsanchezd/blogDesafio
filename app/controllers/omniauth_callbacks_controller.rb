@@ -1,5 +1,5 @@
 class OmniauthCallbacksController < Devise::OmniauthCallbacksController
-  before_action :load_user, only: [:twitter, :facebook]
+  before_action :find_or_create_user, only: [:twitter, :facebook]
 
   def twitter
     sign_in_and_set_msg("twitter")
@@ -22,10 +22,7 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
   end
 
 
-  def load_user
-    @user ||= User::FindOrCreateForOauth.new(
-      oauth: env["omniauth.auth"],
-      current_user: current_user
-    ).call
+  def find_or_create_user
+    @user ||= User::FindOrCreateForOauth.new(env["omniauth.auth"]).call
   end
 end
