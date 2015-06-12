@@ -14,28 +14,24 @@ class User::FindOrCreateForOauth
   private
 
   def init_identity
-    @identity ||= Identity.find_or_initialize_by(uid: oauth.uid, provider: oauth.provider)
+    @identity ||= Identity.find_or_initialize_by(oauth_params)
   end
 
   def assign_user_to_identity
     identity.user = find_or_create_user
-    identity.save
+    identity.save!
   end
 
   def find_or_create_user
-    find_user_by_oauth || create_user_from_oauth
+    User.where(oauth_params).first_or_create do |u|
+      u.email = temp_email
+      u.password = temp_password
+      u.password_confirmation = temp_password
+    end
   end
 
-  def find_user_by_oauth
-    User.find_by(email: oauth.info.email)
-  end
-
-  def create_user_from_oauth
-    User.create(
-      email: temp_email,
-      password: temp_password,
-      password_confirmation: temp_password
-    )
+  def oauth_params
+    oauth.slice(:uid, :provider)
   end
 
   def temp_email
