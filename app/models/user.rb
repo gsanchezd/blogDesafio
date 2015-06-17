@@ -17,8 +17,7 @@ class User < ActiveRecord::Base
   end
 
   def email_verified?
-    return false if email.blank?
-    return false if has_temporal_email?
+    return false if email.blank? || has_temporal_email?
     true
   end
 
