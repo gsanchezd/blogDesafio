@@ -3,7 +3,15 @@ Rails.application.routes.draw do
   get 'comments/create'
 
   resources :posts do
-    resources :comments
+    member do 
+      get 'upvote'
+    end
+
+    resources :comments do
+      member do
+        get 'upvote'
+      end
+    end
   end
   resources :finish_signup, only: [:edit, :update]
 

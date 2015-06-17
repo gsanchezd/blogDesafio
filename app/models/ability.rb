@@ -11,6 +11,7 @@ class Ability
       can :read, :all
       can :create, Post
       can [:edit, :destroy], [Post, Comment], user_id: user.id
+      can :upvote, [Post, Comment]
     else
       can :read, :all      
     end

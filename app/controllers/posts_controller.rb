@@ -59,9 +59,22 @@ class PostsController < ApplicationController
     end
   end
 
-  private
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def post_params
-      params.require(:post).permit(:title, :content, :photo, :photo_cache)
+  def upvote
+    @post = Post.find(params[:id])
+    @vote = @post.votes.build(user:@current_user)
+    if @post.users_who_vote.include? current_user
+      @post.votes.where(user:current_user).first.delete
+      redirect_to @post, notice: "Tu voto ha sido borrado"
+    elsif @vote.save
+      redirect_to @post, notice: "Tu voto ha sido creado"
+    else
+      redirect_to @post, notice: "Tu voto no ha podido ser asignado"
     end
+  end
+
+  private
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def post_params
+    params.require(:post).permit(:title, :content, :photo, :photo_cache)
+  end
 end

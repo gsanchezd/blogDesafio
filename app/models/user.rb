@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
 
   has_many :posts, dependent: :destroy
   has_many :comments, dependent: :destroy
+  has_many :identities
   enum role: [:noob, :amateur, :pro]
 
   before_save :default_values

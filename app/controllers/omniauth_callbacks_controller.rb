@@ -21,7 +21,7 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
       sign_in_and_redirect(@user, event: :authentication)
       set_flash_message(:notice, :sucess, kind: login_type) if is_navigational_format?
     else
-      session["devise.#{login_type}_data"] = env["omniauth.auth"]
+      session["devise.#{login_type}_data"] = env["omniauth.auth"].except("extra")
       redirect_to new_user_registration_url
     end
   end

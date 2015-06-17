@@ -3,5 +3,6 @@ class Post < ActiveRecord::Base
   belongs_to :user
   mount_uploader :photo, PictureUploader
   validates :title, presence: true
-  
+  has_many :votes, as: :votable
+  has_many :users_who_vote, through: :votes, :source => :user
 end
