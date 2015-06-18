@@ -1,6 +1,6 @@
 <div class="container">
-<h1>Listing Posts <%= @q %> </h1>
-
+<h1>Listing Posts </h1>
+<h2> <%= "filtrando por #{@q}, #{@posts.count} resultados" if @q and !@q.empty? %> </h2>
 <table>
   <thead>
     <tr>
@@ -26,6 +26,8 @@
 </table>
 
 <br>
+
+<%= paginate @posts %>
 
 <%= link_to 'New Post', new_post_path %>
 </div>

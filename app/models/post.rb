@@ -6,4 +6,5 @@ class Post < ActiveRecord::Base
   has_many :votes, as: :votable
   has_many :users_who_voted, through: :votes, :source => :user
 
+  paginates_per 25
 end

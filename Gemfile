@@ -13,6 +13,8 @@ gem "omniauth"
 gem "omniauth-facebook"
 gem "omniauth-twitter"
 gem 'dotenv-rails'
+gem 'faker'
+gem 'kaminari'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'

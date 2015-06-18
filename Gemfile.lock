@@ -70,6 +70,8 @@ GEM
       dotenv (= 2.0.1)
     erubis (2.7.0)
     execjs (2.5.2)
+    faker (1.4.3)
+      i18n (~> 0.5)
     faraday (0.9.1)
       multipart-post (>= 1.2, < 3)
     globalid (0.3.5)
@@ -85,6 +87,9 @@ GEM
       thor (>= 0.14, < 2.0)
     json (1.8.3)
     jwt (1.5.0)
+    kaminari (0.16.3)
+      actionpack (>= 3.0.0)
+      activesupport (>= 3.0.0)
     loofah (2.0.2)
       nokogiri (>= 1.5.9)
     mail (2.6.3)
@@ -197,8 +202,10 @@ DEPENDENCIES
   coffee-rails (~> 4.1.0)
   devise
   dotenv-rails
+  faker
   jbuilder (~> 2.0)
   jquery-rails
+  kaminari
   mini_magick
   omniauth
   omniauth-facebook

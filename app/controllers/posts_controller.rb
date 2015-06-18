@@ -6,10 +6,11 @@ class PostsController < ApplicationController
   def index
     @q = params[:q]
     if @q
-      @posts = Post.where(title:@q)
+      @posts = Post.where("title ilike ? or content ilike ?", "%#{@q}%","%#{@q}%")
     else
-      @posts = Post.all
+      @posts = Post.all.page 
     end
+    @posts = @posts.page params[:page] 
   end
 
   # GET /posts/1
