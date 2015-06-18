@@ -61,8 +61,8 @@ class PostsController < ApplicationController
 
   def upvote
     @post = Post.find(params[:id])
-    @vote = @post.votes.build(user:@current_user)
-    if @post.users_who_vote.include? current_user
+    @vote = @post.votes.build(user:current_user)
+    if @post.users_who_voted.include? current_user
       @post.votes.where(user:current_user).first.delete
       redirect_to @post, notice: "Tu voto ha sido borrado"
     elsif @vote.save

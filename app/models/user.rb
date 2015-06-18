@@ -11,7 +11,8 @@ class User < ActiveRecord::Base
   enum role: [:noob, :amateur, :pro]
 
   before_save :default_values
-
+  has_many :votes
+  
   def default_values
     self.role ||= 0
   end

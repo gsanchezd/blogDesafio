@@ -13,6 +13,7 @@ Rails.application.routes.draw do
       end
     end
   end
+  
   resources :finish_signup, only: [:edit, :update]
 
   get 'pages/index'

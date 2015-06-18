@@ -1,19 +1,21 @@
 <div class="container">
-<p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @post.title %>
-</p>
+	<p>
+	  <strong>Title:</strong>
+	  <%= @post.title %>
+	</p>
 
-<p>
-  <strong>Content:</strong>
-  <%= @post.content %>
-</p>
+	<p>
+	  <strong>Content:</strong>
+	  <%= @post.content %>
+	</p>
 
-<%= link_to 'Edit', edit_post_path(@post) %> |
-<%= link_to 'Back', posts_path %>
+	<%= image_tag @post.photo, class:"img-responsive" %>
 
-<%= render partial: "comments/comment", collection: @last_comments %>
-<%= render 'comments/form' %>
+	<%= link_to 'Edit', edit_post_path(@post) %> |
+	<%= link_to 'Back', posts_path %>
+
+	<%= render partial: "comments/comment", collection: @last_comments %>
+	<%= render 'comments/form' %>
+
 </div>
