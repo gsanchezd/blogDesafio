@@ -4,16 +4,16 @@ Rails.application.routes.draw do
 
   resources :posts do
     member do 
-      get 'upvote'
+      get :upvote
     end
 
     resources :comments do
       member do
-        get 'upvote'
+        get :upvote
       end
     end
   end
-  
+
   resources :finish_signup, only: [:edit, :update]
 
   get 'pages/index'

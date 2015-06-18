@@ -4,6 +4,12 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
+    @q = params[:q]
+    if @q
+      @posts = Post.where(title:@q)
+    else
+      @posts = Post.all
+    end
   end
 
   # GET /posts/1
