@@ -4,11 +4,15 @@ class CommentsController < ApplicationController
     @comment = @post.comments.build(comments_params)
     @comment.user = current_user
 
-    if @comment.save
-      redirect_to @comment.post, notice: "Tu comentario ha sido creado"
-    else
-      redirect_to @comment.post, alert: "Tu comentario no ha podido ser creado"
-    end      
+    respond_to do |format|
+      if @comment.save
+        format.html  { redirect_to @comment.post, notice: "Tu comentario ha sido creado" }
+        format.js
+      else
+        format.html { redirect_to @comment.post, alert: "Tu comentario no ha podido ser creado" }
+        format.js
+      end      
+    end
       
   end
 

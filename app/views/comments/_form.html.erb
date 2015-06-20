@@ -1,6 +1,5 @@
-
 <div class="well">
-<%= form_for [@post, @comment] do |f| %>
+<%= form_for [@post, @comment], remote: true do |f| %>
 	<div class="form-group">
 	<%= f.label :content, "Comentarios?" %>
 	<%= f.text_area :content, class:'form-control' %>

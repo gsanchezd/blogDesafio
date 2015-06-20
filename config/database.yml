@@ -14,8 +14,8 @@ development:
   encoding: unicode
   database: blogbootcamp2_development
   pool: 5
-  username: desafioblog
-  password: superdesafio
+  username: boletia
+  password: boletia
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -25,8 +25,8 @@ test:
   encoding: unicode
   database: blogbootcamp2_test
   pool: 5
-  username: desafioblog
-  password: superdesafio
+  username: boletia
+  password: boletia
 
 production:
   <<: *default

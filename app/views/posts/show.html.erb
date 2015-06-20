@@ -15,7 +15,13 @@
 	<%= link_to 'Edit', edit_post_path(@post) %> |
 	<%= link_to 'Back', posts_path %>
 
-	<%= render partial: "comments/comment", collection: @last_comments %>
+  <div id="comments_count">
+    <%= @post.comments.count %>
+  </div>
+
+  <div id="comments">
+    <%= render partial: "comments/comment", collection: @last_comments %>
+  </div>
 	<%= render 'comments/form' %>
 
 </div>

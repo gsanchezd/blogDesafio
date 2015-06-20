@@ -1,0 +1,6 @@
+<% if @comment.persisted? %>
+  $("#comments_count").text("<%= @post.comments.count %>");
+  $("#comments").append("<%= j render @comment %>");
+<% else %>
+  alert("Tu comentario no puedo ser guardado.");
+<% end %>
